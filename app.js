@@ -2,11 +2,14 @@ var express = require('express');
 
 var app = express();
 
-app.use(express.static('public/templates/')); //html file script tags search in this directory for dependencies
+app.use(express.static('public/template/')); //html file script tags search in this directory for dependencies
+
+app.use(express.static('./src/views/'));
 
 app.get('/', function(req, response) {
     
-    response.send("Hello");
+    // response.send("Hello");
+    response.render('index', {});
 });
 
 
