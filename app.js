@@ -6,6 +6,8 @@ app.use(express.static('public/template/')); //html file script tags search in t
 
 app.use(express.static('./src/views/'));
 
+app.use(express.static("bower_components"));
+
 app.get('/', function(req, response) {
     
     // response.send("Hello");
