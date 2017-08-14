@@ -55,10 +55,22 @@
         $scope.save = function () {
           $scope.count++;
           
+
+
+        };
+        $scope.reset = function() {
+
+          //reset all the input fields
+          $scope.product.name = ""
+          $scope.product.desc = ""
+          $scope.product.price = ""
+          $scope.product.reviews = ""
+          $scope.product.rating = ""
+
         };
 
         $scope.product = { //defining angular js model
-          author_firstName: "saif",
+          author_firstName: "saif", //model properties with default values
           author_lastName: "dj",
           name: "MacBook Pro",
           desc: "This is i5 8gb 128 SSD MacBook Pro, late 2016 Model",
@@ -67,7 +79,7 @@
           rating: "5",
 
           // Define utility functions on the model object
-          getFullName: function () {
+          getFullName: function () { //model functions
             return this.author_firstName + " " + this.author_lastName;
           }
         };
