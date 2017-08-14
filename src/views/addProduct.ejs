@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<h1> Add Product </h1>
+<h4> Enter product details and click on "save"</h4>
+
+
+
+<body ng-app="mainModule">
+  <div ng-controller="simpleController">
+
+    <label>           Name: <input type="text" ng-model="product.name" id="name" /> </label>
+    <br/>
+    <br/>
+    <label>           Description: <input type="text" ng-model="product.desc" /></label>
+    <br/>
+    <br/>
+    <label>           Price($): <input type="text" ng-model="product.price" /></label>
+    <br/>
+    <br/>
+    <label>           Reviews: <input type="text" ng-model="product.reviews" /> reviews </label>
+    <br/>
+    <br/>
+    <label>           Rating: <input type="text" ng-model="product.rating" /> </label>
+    <br/>
+    <br/>
+    <br />
+    <label>Do you want to save the <strong> {{product.name}} </strong> details </label>
+    <br/>
+    <br/>
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="save()" value="Save" />
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <p>The save button has been clicked {{count}} times, <br/>-by author <strong>{{product.getFullName()}} </strong> </p>
+
+  </div>
+
+
+
+  <script>
+    angular.module('mainModule', [])
+      .controller('simpleController', ['$scope', function ($scope) {
+        
+        $scope.count = 0;  //global variable
+        $scope.myFunc = function () {
+          $scope.count++;
+        };
+        $scope.save = function () {
+          $scope.count++;
+          
+        };
+
+        $scope.product = { //defining angular js model
+          author_firstName: "saif",
+          author_lastName: "dj",
+          name: "MacBook Pro",
+          desc: "This is i5 8gb 128 SSD MacBook Pro, late 2016 Model",
+          price: "999",
+          reviews: "10",
+          rating: "5",
+
+          // Define utility functions on the model object
+          getFullName: function () {
+            return this.author_firstName + " " + this.author_lastName;
+          }
+        };
+
+
+      }]);
+  </script>
+
+</body>
+
+
+
+</html>

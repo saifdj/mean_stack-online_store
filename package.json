@@ -5,7 +5,8 @@
   "main": "app.js",
   "dependencies": {
     "ejs": "^2.5.7",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "mongodb": "^2.2.31"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
