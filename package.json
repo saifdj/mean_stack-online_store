@@ -4,11 +4,14 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "ejs": "^2.5.7",
     "express": "^4.15.4"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-inject": "^4.2.0",
+    "gulp-nodemon": "^2.2.1",
+    "nodemon": "^1.11.0",
     "wiredep": "^4.0.0"
   },
   "scripts": {

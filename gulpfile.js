@@ -1,10 +1,12 @@
 var gulp = require("gulp");
 
+var nodemon = require("gulp-nodemon");
 
 // gulp.task("name", function() {
 //  console.log("name task ran!!");
 // });
 
+var jsFiles = ['*.js', 'src/**/*.js']; 
 
 gulp.task("inject", function () {
 
@@ -28,4 +30,18 @@ gulp.task("inject", function () {
         .pipe(inject(injectSrc, injectOptions))
         .pipe(gulp.dest("./src/views"));
 
+});
+
+
+gulp.task("serve", ["inject"], function() {
+
+    var options = {
+        script : "app.js",
+        delayTime : 1,
+        watch : jsFiles
+    }
+
+    return nodemon(options).on("restart", function(event) {
+        console.log("Restarting server... ")
+    });
 });
