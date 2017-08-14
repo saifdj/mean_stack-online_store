@@ -40,6 +40,14 @@
     <br/>
     <p>The save button has been clicked {{count}} times, <br/>-by author <strong>{{product.getFullName()}} </strong> </p>
 
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <p>The save operations Status: <br/>  =  {{writeResult}} </p>
+
+
   </div>
 
 
@@ -47,18 +55,48 @@
   <script>
     angular.module('mainModule', [])
       .controller('simpleController', ['$scope', function ($scope) {
-        
+
         $scope.count = 0;  //global variable
+        $scope.writeResult = "-";
         $scope.myFunc = function () {
           $scope.count++;
         };
         $scope.save = function () {
           $scope.count++;
-          
+
+          var productDict = [{
+              "name": $scope.product.name, 
+              "desc": $scope.product.desc,
+              "price": $scope.product.price,
+              "reviews": $scope.product.reviews,
+              "rating": $scope.product.rating
+            }];
+
+          var mongodb = require("mongodb").MongoClient;
+          var mongoURL = "mongodb://localhost:27017/productsData";
+          mongodb.connect(mongoURL, function (err, db) {
+
+            console.log("Connection to Mongo "+ err);
+            alert("Connected to Mongo");
+            var collection = db.collection("products");
+
+            collection.insertMany(productDict, function (err, results) {
+              
+              if (err) {
+                $scope.writeResult = "Failed to save Error: " + err;
+              }
+              else {
+                $scope.writeResult = "Sucessfully saved: " + results;
+              }
+              db.close()
+            });
+
+          });
+
 
 
         };
-        $scope.reset = function() {
+        $scope.reset = function () {
 
           //reset all the input fields
           $scope.product.name = ""
