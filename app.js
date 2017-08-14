@@ -19,7 +19,8 @@ app.get('/', function(req, response) {
     
     // response.send("Hello");
     response.render('index', {
-        "nav": [{"name":"Add Product", "link": "products/add"},{"name":"Saif", "link": "saif"}, {"name":"Reshu", "link": "reshu"}]
+        "nav": [{"name":"Add Product", "link": "products/add"}] 
+        //{"name":"Saif", "link": "saif"}, {"name":"Reshu", "link": "reshu"}
 });
 });
 
