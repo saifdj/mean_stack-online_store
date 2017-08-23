@@ -93,4 +93,6 @@ app.use("/products", productsRoute);
 // To see data in a collection present in a DB
 // first switch to database "use dbname", eg., "use filtersDB"
 // then "db.collectionname.find()", e.g., "db.searchParams.find()", this logs the data in searchParams collection
+//
+// Use "sudo chown -R `id -un` /data/db" to give read write permissions to data/db directory
 //*/
