@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
 <h1> Add Product </h1>
@@ -45,19 +45,24 @@
     <br/>
     <br/>
     <br/>
-    <p>The save operations Status: <br/>  =  {{writeResult}} </p>
+    <p>The save operations Status: <br/> = {{writeResult}} </p>
 
 
   </div>
 
 
 
-  <script>
+  <script type="text/javascript">
+    var mongodb = require("mongodb").MongoClient;
+    var mongoURL = "mongodb://localhost:27017/productsData";
+
     angular.module('mainModule', [])
       .controller('simpleController', ['$scope', function ($scope) {
 
         $scope.count = 0;  //global variable
         $scope.writeResult = "-";
+
+
         $scope.myFunc = function () {
           $scope.count++;
         };
@@ -65,23 +70,22 @@
           $scope.count++;
 
           var productDict = [{
-              "name": $scope.product.name, 
-              "desc": $scope.product.desc,
-              "price": $scope.product.price,
-              "reviews": $scope.product.reviews,
-              "rating": $scope.product.rating
-            }];
+            "name": $scope.product.name,
+            "desc": $scope.product.desc,
+            "price": $scope.product.price,
+            "reviews": $scope.product.reviews,
+            "rating": $scope.product.rating
+          }];
+          alert(mongoURL + "  " + mongodb);
 
-          var mongodb = require("mongodb").MongoClient;
-          var mongoURL = "mongodb://localhost:27017/productsData";
           mongodb.connect(mongoURL, function (err, db) {
 
-            console.log("Connection to Mongo "+ err);
+            console.log("Connection to Mongo " + err);
             alert("Connected to Mongo");
             var collection = db.collection("products");
 
             collection.insertMany(productDict, function (err, results) {
-              
+
               if (err) {
                 $scope.writeResult = "Failed to save Error: " + err;
               }

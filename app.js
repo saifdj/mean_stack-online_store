@@ -76,3 +76,21 @@ app.listen(port, function (err) {
 
 
 app.use("/products", productsRoute);
+
+
+
+//***
+// To shut down mongo server, open shell "path/to/unarchived mongodb.tgz/bin/mongo" & switch to admin database using "use admin"
+// then shutdown using "db.shutdownServer()", then run mongo deamon as usual, like "path/to/monogodb/dirctory/bin/mongod", this runs deamon on default port "27017", 
+// we can run demon on other ports using "./bin/mongod --path 27018"
+//
+// We can also kill mongo demon using "kill processid", processid can be any number, e.g., "kill 1309", The command gives process id "pgrep mongo"
+//
+// Use this command to import data from json file into mongo db
+// "./mongodatabase/bin/mongoimport --db filtersDB --collection searchParams --drop --file ~/Downloads/search_params.json"
+// This creates new db/appends data to filtersDB and remove existing data in  searchParams collection
+//
+// To see data in a collection present in a DB
+// first switch to database "use dbname", eg., "use filtersDB"
+// then "db.collectionname.find()", e.g., "db.searchParams.find()", this logs the data in searchParams collection
+//*/
