@@ -118,4 +118,7 @@ app.use("/products", productsRoute);
 // 
 // Mongo update, for commands check image present in ./resources
 // db.goof.update({id:1}, {$rename:{'foo':'renamedFoo'}}) //updates the element with id 1, reanmes "foo" to "renamedFoo", similarly we have "$set" & "$unset" for adding & removing new properties respectively 
+// To get the effect of update in all matching records we need one more argument "multi"
+// db.users.update({type:1}, {$set:{'adminLevel':1}}, {multi:true} ) //this adds 'adminLevel':1, a new key value pair to all the records with user type 1
+//
 //*/
