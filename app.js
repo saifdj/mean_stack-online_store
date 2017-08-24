@@ -105,6 +105,17 @@ app.use("/products", productsRoute);
 // db.users.find({"type":{ $gt:2}}) //user with type > 2, can also use "$gte" for >=, Similarly $lt & $lte for less than & less than or equal to
 // db.users.find({"type":{ $gt:1, $lt:3 }}) //for list of users with type between 1 & 3
 // db.users.find({"type":{ $in:[1,4] }}) //for list of users with having ids either 1 OR 4
+// "find()" also works with Strings as well, uptill now we have worked with integers
 //
+//*/
+
+
+//*** Mongo save & insert
+// 
+// db.goof.save({id:1, foo:5}) //This creates a goof collection in current Database and insert the input with 2 key value pairs
+// 
+// 
+// 
+// 
 //
 //*/
