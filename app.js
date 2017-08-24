@@ -79,7 +79,7 @@ app.use("/products", productsRoute);
 
 
 
-//***
+//*** SETUP & Shell
 // To shut down mongo server, open shell "path/to/unarchived mongodb.tgz/bin/mongo" & switch to admin database using "use admin"
 // then shutdown using "db.shutdownServer()", then run mongo deamon as usual, like "path/to/monogodb/dirctory/bin/mongod", this runs deamon on default port "27017", 
 // we can run demon on other ports using "./bin/mongod --path 27018"
@@ -95,4 +95,16 @@ app.use("/products", productsRoute);
 // then "db.collectionname.find()", e.g., "db.searchParams.find()", this logs the data in searchParams collection
 //
 // Use "sudo chown -R `id -un` /data/db" to give read write permissions to data/db directory
+//*/
+
+
+
+//*** Mongo filters using find
+// Assume json as {"id": "2", "type" : 1, "firstName" : "Saif" } & DB name is "eventsDB" & Collection is "users"
+// db.users.find({"firstName": "Saif"}) //we get record with matching name
+// db.users.find({"type":{ $gt:2}}) //user with type > 2, can also use "$gte" for >=, Similarly $lt & $lte for less than & less than or equal to
+// db.users.find({"type":{ $gt:1, $lt:3 }}) //for list of users with type between 1 & 3
+// db.users.find({"type":{ $in:[1,4] }}) //for list of users with having ids either 1 OR 4
+//
+//
 //*/
