@@ -113,9 +113,9 @@ app.use("/products", productsRoute);
 //*** Mongo save & insert
 // 
 // db.goof.save({id:1, foo:5}) //This creates a goof collection in current Database and insert the input with 2 key value pairs
+// document is a single object in mongo terms., eg. document "{id:1, foo:5}", "db.goof.save" -> overwrites the entries in collection if id matches, where as "db.goof.insert" would throw an duplicate key error
 // 
 // 
-// 
-// 
-//
+// Mongo update, for commands check image present in ./resources
+// db.goof.update({id:1}, {$rename:{'foo':'renamedFoo'}}) //updates the element with id 1, reanmes "foo" to "renamedFoo", similarly we have "$set" & "$unset" for adding & removing new properties respectively 
 //*/
