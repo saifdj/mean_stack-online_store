@@ -100,7 +100,7 @@ app.use("/products", productsRoute);
 
 
 //*** Mongo filters using find
-// Assume json as {"id": "2", "type" : 1, "firstName" : "Saif" } & DB name is "eventsDB" & Collection is "users"
+// Assume json as {"id": "2", "type" : 1, "firstName" : "Saif", location: {"city":"Hyd"} } & DB name is "eventsDB" & Collection is "users"
 // db.users.find({"firstName": "Saif"}) //we get record with matching name
 // db.users.find({"type":{ $gt:2}}) //user with type > 2, can also use "$gte" for >=, Similarly $lt & $lte for less than & less than or equal to
 // db.users.find({"type":{ $gt:1, $lt:3 }}) //for list of users with type between 1 & 3
@@ -120,5 +120,24 @@ app.use("/products", productsRoute);
 // db.goof.update({id:1}, {$rename:{'foo':'renamedFoo'}}) //updates the element with id 1, reanmes "foo" to "renamedFoo", similarly we have "$set" & "$unset" for adding & removing new properties respectively 
 // To get the effect of update in all matching records we need one more argument "multi"
 // db.users.update({type:1}, {$set:{'adminLevel':1}}, {multi:true} ) //this adds 'adminLevel':1, a new key value pair to all the records with user type 1
+//
+//
+// 
+//*/
+
+
+/////* Indexing 
+//
+// db.users.getIndexes() // lists the indexes, didn't contain the automatic index on id field
+// db.users.find({firstName: 'Saif'}).explain() //if this command prints {"cursor":"BasicCursor"}, then we dont have any indexing, the results are displayed by enumerating all documents, its a full disk scan
+// 
+// To add Indexing to existing collection
+// db.users.ensureIndex({firstName: 1}) //Adds index on firstName in ascending order, -1 is for descending, if we check db.users.find({firstName: 'Saif'}).explain(), we will find {"cursor":"BtreeCusrosr firstName_1"}, which means firstName is indexed
+//
+// Removing Indexes
+// db.users.dropIndex('firstName_1'), we can verify if its dropped using getIndexes()
+//
+// Index on Embedded Fields, e.g., location.city
+// db.users.ensureIndex({'location.city':1}) //creates index on embedded field city
 //
 //*/
