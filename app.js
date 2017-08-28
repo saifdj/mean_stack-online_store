@@ -141,3 +141,19 @@ app.use("/products", productsRoute);
 // db.users.ensureIndex({'location.city':1}) //creates index on embedded field city
 //
 //*/
+
+
+
+
+/////* Mongo DB Aggregation Framework, for data analysis & creating new field from existing data
+//
+// Operators
+// $project - pass along only specific document fields
+// $match - filter documents, its a query operator
+// $group - group documents on a particular field
+// $sort - sort documents on a particular field
+// $skip - skip certain documents in the input data
+// $limit - limit the number of documents in output data 
+// $unwind - flatter data in an embedded array
+//
+//*/
